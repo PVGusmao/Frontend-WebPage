@@ -71,7 +71,7 @@ const IndividualCard = styled.div`
   justify-content: space-between;
   margin: 10px 0px;
   padding: 10px;
-  width: 750px;
+  width: auto;
 `;
 
 const Wrapper = styled.div`
@@ -231,6 +231,8 @@ Cards.propTypes = {
   url: PropTypes.string,
   invited_people: PropTypes.arrayOf(PropTypes.object),
   element: PropTypes.instanceOf(PropTypes.object),
+  handleRemoveButton: PropTypes.func,
+  showModal: PropTypes.bool,
 }.isRequired;
 
 const mapDispatchToProps = (dispatch) => ({

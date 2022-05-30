@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import Cards from "./components/Cards";
 import Header from "./components/Header";
 import Modal from "./components/Modal";
@@ -6,8 +7,7 @@ import data from "./frontend-test/data.json";
 import { connect } from "react-redux";
 import management from "./frontend-test/management.json";
 import styled from "styled-components";
-import web from "./images/web.svg";
-import more from "./images/more.svg";
+import DemoCards from "./components/DemoCards";
 
 function App(props) {
   const { showModal } = props;
@@ -48,9 +48,10 @@ function App(props) {
             <Title>Endomarketing</Title>
             <FilterWrapper>
               <Filter>
-                <Option>Evento</Option>
-                <Option>Publicação</Option>
-                <Option>Comunicado</Option>
+                <Option>TIPO</Option>
+                <Option>EVENT</Option>
+                <Option>PUBLICATION</Option>
+                <Option>RELEASE</Option>
               </Filter>
               <CreateEvent>
                 <Paragraph>CRIAR</Paragraph>
@@ -86,22 +87,12 @@ function App(props) {
             {
               boards.length &&
                 boards.map((element, index) => (
-                  <Demonstrative key={index}>
-                    <DemonstrativeTitleWrapper>
-                      <DemonstrativeTitle>{element.title}</DemonstrativeTitle>
-                      <IconWrapper>
-                        <Icon src={web} alt="web icon" />
-                        <Icon src={more} alt="more icon" />
-                      </IconWrapper>
-                    </DemonstrativeTitleWrapper>
-                    {element.resume_files.map((item, ind) => (
-                      <DemonstrativeImage
-                        key={ind}
-                        src={item.file}
-                        alt={element.title}
-                      />
-                    ))}
-                  </Demonstrative>
+                  <DemoCards
+                    element={ element }
+                    key={ index }
+                    setBoards={ setBoards }
+                    boards={ boards }
+                  />
                 ))
             }
           </Management>
@@ -265,46 +256,12 @@ const TitleManagement = styled.p`
   width: 191px;
 `;
 
-const Demonstrative = styled.div`
-  margin-top: 10px;
-  background-color: rgba(52, 137, 177, 0.1);
-`;
-
-const DemonstrativeTitleWrapper = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 2px 2px 0px 2px;
-`;
-
-const DemonstrativeTitle = styled.p`
-  color: #707070;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  height: 15px;
-  line-height: 15px;
-  width: auto;
-`;
-
-const IconWrapper = styled.div`
-  align-items: center;
-  display: flex;
-`;
-
-const Icon = styled.img`
-  cursor: pointer;
-`;
-
-const DemonstrativeImage = styled.img`
-  height: 60px;
-  padding: 2.5px;
-  width: 60px;
-`;
-
 const mapStateToProps = (state) => ({
   showModal: state.eventReducer.showModal,
 });
+
+App.propTypes = {
+  showModal: PropTypes.bool,
+}.isRequired;
 
 export default connect(mapStateToProps, null)(App);

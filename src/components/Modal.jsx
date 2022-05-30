@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { setModal } from '../redux/action';
@@ -131,5 +132,10 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
   detailsPerson: state.eventReducer.detailsPerson,
 });
+
+Modal.propTypes = {
+  setModal: PropTypes.func,
+  detailsPerson: PropTypes.arrayOf(PropTypes.object),
+}.isRequired;
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);
