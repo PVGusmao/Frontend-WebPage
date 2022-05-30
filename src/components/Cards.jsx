@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import more from '../images/more.svg';
 
 function Cards(props) {
   const { element: {title, type, description,
@@ -38,7 +39,7 @@ function Cards(props) {
           </Description>
         </Details>
       </Wrapper>
-      <More></More>
+      <More><MoreImage src={ more }/></More>
     </IndividualCard>
   );
 }
@@ -168,14 +169,19 @@ const Description = styled.p`
 `
 
 const More = styled.button`
-  // background: none;
-	// border: none;
-	// color: inherit;
-	// cursor: pointer;
-	// font: inherit;
+  background: none;
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	font: inherit;
   height: 24px;
-	// padding: 0;
-	// outline: inherit;
+	padding: 0;
+	outline: inherit;
+  width: 24px;
+`
+
+const MoreImage = styled.img`
+  heigth: 24px;
   width: 24px;
 `
 

@@ -4,7 +4,6 @@ import Header from './components/Header';
 import data from './frontend-test/data.json';
 import management from './frontend-test/management.json';
 import styled from 'styled-components';
-import more from './images/more.svg';
 import web from './images/web.svg';
 
 function App() {
@@ -12,8 +11,8 @@ function App() {
   const [boards, setBoards] = useState([]);
 
   useEffect(() => {
-    setList([data]);
-    setBoards([management]);
+    setList(data.data);
+    setBoards(management.data[0].boards);
   }, [])
 
   return (
@@ -37,7 +36,7 @@ function App() {
           </TitleWrapper>
           <CardsWrapper>
             {
-              list.length !== 0 && list[0].data.map((element) => (
+              list.length !== 0 && list.map((element) => (
                 <Cards element={ element } key={ element.id } />
               ))
             }
@@ -59,28 +58,28 @@ function App() {
             <Dispatch>DISPENSAR</Dispatch>
           </Notification>
           <Management>
-          <TitleManagement>Quadros de Gestão à Vista</TitleManagement>
-          {
-            boards.length && boards[0].data[0].boards.map((element, index) => (
-              <Demonstrative key={ index }>
-                <DemonstrativeTitleWrapper>
-                  <DemonstrativeTitle>{ element.title }</DemonstrativeTitle>
-                  <IconWrapper>
-                    <Icon src={ web } alt="web icon" />
-                  </IconWrapper>
-                </DemonstrativeTitleWrapper>
-                {
-                  element.resume_files.map((item, ind) => (
-                    <DemonstrativeImage
-                      key={ ind }
-                      src={ item.file }
-                      alt={ element.title }
-                    />
-                  ))
-                }
-              </Demonstrative>
-            ))
-          }
+            <TitleManagement>Quadros de Gestão à Vista</TitleManagement>
+            {
+              boards.length && boards.map((element, index) => (
+                <Demonstrative key={ index }>
+                  <DemonstrativeTitleWrapper>
+                    <DemonstrativeTitle>{ element.title }</DemonstrativeTitle>
+                    <IconWrapper>
+                      <Icon src={ web } alt="web icon" />
+                    </IconWrapper>
+                  </DemonstrativeTitleWrapper>
+                  {
+                    element.resume_files.map((item, ind) => (
+                      <DemonstrativeImage
+                        key={ ind }
+                        src={ item.file }
+                        alt={ element.title }
+                      />
+                    ))
+                  }
+                </Demonstrative>
+              ))
+            }
           </Management>
         </SideContainer>
       </ContainerWrapper>
@@ -90,7 +89,7 @@ function App() {
 
 const Main = styled.main`
   background: #F2F3F5;
-  height: 100%;
+  height: 100vh;
 `
 
 const ContainerWrapper = styled.section`
@@ -275,7 +274,7 @@ const IconWrapper = styled.div`
 `
 
 const Icon = styled.img`
-
+  cursor: pointer;
 `
 
 const DemonstrativeImage = styled.img`
