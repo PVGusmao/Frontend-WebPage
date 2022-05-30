@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { setModal } from '../redux/action';
 
 function Modal(props) {
-  const { detailsPerson, showModal, setModal } = props;
+  const { detailsPerson, setModal } = props;
 
   const handleModal = () => {
     setModal();
@@ -12,6 +12,7 @@ function Modal(props) {
 
   return (
     <Main>
+      <Title>Convidados</Title>
       {
         detailsPerson.length !== 0 && detailsPerson.map((element, index) => (
           <CardWrapper key={index}>
@@ -19,7 +20,11 @@ function Modal(props) {
             <About>
               <Name>{ element.name }</Name>
               <Username>{ element.username }</Username>
-              <Confirmation confirm={ element.confirmed_presence }> Confirmado: { element.confirmed_presence.toString().toUpperCase() }</Confirmation>
+              <Confirmation
+                confirm={ element.confirmed_presence }
+              >
+                Confirmado: { element.confirmed_presence.toString().toUpperCase() }
+              </Confirmation>
             </About>
           </CardWrapper>
         ))
@@ -41,6 +46,15 @@ const Main = styled.section`
   width: auto;
 `
 
+const Title = styled.h1`
+  color: #707070;
+  font-family: "Roboto";
+  font-style: normal;
+  height: 19px;
+  line-height: 19px;
+  width: auto;
+`
+
 const CardWrapper = styled.section`
   background-color: white;
   border-radius: 5px;
@@ -48,6 +62,7 @@ const CardWrapper = styled.section`
   display: flex;
   margin: 10px 15px 0 15px;
   padding: 10px;
+  width: 300px;
 `
 
 const ImagePerson = styled.img`
@@ -114,8 +129,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-  showModal: state.eventReducer.showModal,
   detailsPerson: state.eventReducer.detailsPerson,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);;
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);
