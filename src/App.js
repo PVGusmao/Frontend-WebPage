@@ -38,6 +38,20 @@ function App() {
             }
           </CardsWrapper>
         </Container>
+        <Notification>
+          <NotificationTitle>Endomarketing</NotificationTitle>
+          <NotificationText>
+            Endomarketing está relacionado às
+            ações de treinamento ou qualificação
+            dos colaboradores da empresa
+            visando um melhor serviço para o
+            cliente. Marketing interno, devido ao
+            nome, é usualmente confundido com
+            Endomarketing mesmo sendo
+            conceitos diferentes.
+          </NotificationText>
+          <Dispatch>DISPENSAR</Dispatch>
+        </Notification>
       </ContainerWrapper>
     </Main>
   );
@@ -45,11 +59,11 @@ function App() {
 
 const Main = styled.main`
   background: #F2F3F5;
-  height: 100vh;
+  height: 100%;
 `
 
 const ContainerWrapper = styled.section`
-
+  display: flex;
 `
 
 const Container = styled.section`
@@ -61,11 +75,11 @@ const TitleWrapper = styled.section`
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-top: 34px;
+  margin-top: 36px;
 `
 const FilterWrapper = styled.section`
-  align-items: center;
   display: flex;
+  height: 48px;
 `
 
 const Filter = styled.select`
@@ -73,7 +87,7 @@ const Filter = styled.select`
   border: 1px solid #B4B4B4;
   border-radius: 5px;
   height: 38px;
-  margin: 10px;
+  margin: 0px 10px;
   width: 103px;
 `
 
@@ -120,6 +134,58 @@ const Title = styled.h3`
 `
 
 const CardsWrapper = styled.section`
+
+`
+
+const Notification = styled.section`
+  background-color: #FFF2DE;
+  border: 1px solid #DCD1C0;
+  height: 308px;
+  margin-top: 36px;
+  margin-left: 31.5px;
+  width: 278px;
+`
+
+const NotificationTitle = styled.p`
+  color: #707070;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  height: 19px;
+  line-height: 19px;
+  margin: 29px 143px 12px 21px;
+  width: 115px;
+`
+
+const NotificationText = styled.p`
+  color: #707070;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  height: 152px;
+  line-height: 19px;
+  margin: 0px 21px 20px 21px;
+  width: 236px;
+`
+
+const Dispatch = styled.button`
+  background: none;
+  border: none;
+  border: 1px solid #707070;
+  border-radius: 5px;
+  color: #707070;
+	cursor: pointer;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  height: 37px;
+  line-height: 15px;
+  margin: 0px 145px 30px 21px;
+	outline: inherit;
+	padding: 0;
+  width: 112px;
 `
 
 export default App;
