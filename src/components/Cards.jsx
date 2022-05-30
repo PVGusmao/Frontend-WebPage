@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { connect } from "react-redux";
@@ -7,6 +7,7 @@ import { getPersonsInfo } from "../redux/action";
 
 function Cards(props) {
   const {
+    handleRemoveButton,
     showModal,
     element,
     element: {
@@ -18,10 +19,15 @@ function Cards(props) {
       invited_people,
     },
   } = props;
+  const [remove, setRemove] = useState(false);
 
   const handleModal = () => {
     const { getPersonsInfo } = props;
     getPersonsInfo(element.invited_people);
+  }
+
+  const handleRemove = () => {
+    setRemove(!remove);
   }
 
   return (
@@ -46,9 +52,12 @@ function Cards(props) {
           <Description>{description}</Description>
         </Details>
       </Wrapper>
-      <More>
-        <MoreImage src={more} />
-      </More>
+      <MoreWrapper>
+        <More onClick={ handleRemove }><MoreImage src={more} /></More>
+        {
+          remove && <Remove id={ element.id } onClick={ handleRemoveButton }>Remove</Remove>
+        }
+      </MoreWrapper>
     </IndividualCard>
   );
 }
@@ -58,10 +67,11 @@ const IndividualCard = styled.div`
   background-color: #ffffff;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
+  height: 100px;
   justify-content: space-between;
   margin: 10px 0px;
   padding: 10px;
-  width: auto;
+  width: 750px;
 `;
 
 const Wrapper = styled.div`
@@ -177,6 +187,13 @@ const Description = styled.p`
   line-height: 18px;
 `;
 
+const MoreWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+`
+
 const More = styled.button`
   background: none;
   border: none;
@@ -184,6 +201,7 @@ const More = styled.button`
   cursor: pointer;
   font: inherit;
   height: 24px;
+  margin-bottom: 10px;
   padding: 0;
   outline: inherit;
   width: 24px;
@@ -192,6 +210,16 @@ const More = styled.button`
 const MoreImage = styled.img`
   heigth: 24px;
   width: 24px;
+`;
+
+const Remove = styled.button`
+  background: red;
+  border: 1px solid lightgray;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 5px;
+  outline: inherit;
 `;
 
 Cards.propTypes = {

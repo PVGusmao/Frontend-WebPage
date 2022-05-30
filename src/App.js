@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Cards from "./components/Cards";
 import Header from "./components/Header";
+import Modal from "./components/Modal";
 import data from "./frontend-test/data.json";
 import { connect } from "react-redux";
 import management from "./frontend-test/management.json";
 import styled from "styled-components";
 import web from "./images/web.svg";
-import Modal from "./components/Modal";
+import more from "./images/more.svg";
 
 function App(props) {
   const { showModal } = props;
@@ -17,6 +18,11 @@ function App(props) {
     setList(data.data);
     setBoards(management.data[0].boards);
   }, []);
+
+  const handleRemoveButton = ({ target }) => {
+    const newList = list.filter((element) => element.id !== +target.id);
+    setList(newList);
+  }
 
   return (
     <Main>
@@ -55,7 +61,11 @@ function App(props) {
           <CardsWrapper>
             {list.length !== 0 &&
               list.map((element) => (
-                <Cards element={element} key={element.id} />
+                <Cards
+                  handleRemoveButton={ handleRemoveButton }
+                  element={element}
+                  key={element.id}
+                />
               ))}
           </CardsWrapper>
         </Container>
@@ -73,24 +83,27 @@ function App(props) {
           </Notification>
           <Management>
             <TitleManagement>Quadros de Gestão à Vista</TitleManagement>
-            {boards.length &&
-              boards.map((element, index) => (
-                <Demonstrative key={index}>
-                  <DemonstrativeTitleWrapper>
-                    <DemonstrativeTitle>{element.title}</DemonstrativeTitle>
-                    <IconWrapper>
-                      <Icon src={web} alt="web icon" />
-                    </IconWrapper>
-                  </DemonstrativeTitleWrapper>
-                  {element.resume_files.map((item, ind) => (
-                    <DemonstrativeImage
-                      key={ind}
-                      src={item.file}
-                      alt={element.title}
-                    />
-                  ))}
-                </Demonstrative>
-              ))}
+            {
+              boards.length &&
+                boards.map((element, index) => (
+                  <Demonstrative key={index}>
+                    <DemonstrativeTitleWrapper>
+                      <DemonstrativeTitle>{element.title}</DemonstrativeTitle>
+                      <IconWrapper>
+                        <Icon src={web} alt="web icon" />
+                        <Icon src={more} alt="more icon" />
+                      </IconWrapper>
+                    </DemonstrativeTitleWrapper>
+                    {element.resume_files.map((item, ind) => (
+                      <DemonstrativeImage
+                        key={ind}
+                        src={item.file}
+                        alt={element.title}
+                      />
+                    ))}
+                  </Demonstrative>
+                ))
+            }
           </Management>
         </SideContainer>
       </ContainerWrapper>

@@ -3,6 +3,7 @@ import { SET_PERSONS_INFO, SET_MODAL } from "../action";
 const INITIAL_STATE = {
   detailsPerson: [],
   showModal: false,
+  remove: false,
 };
 
 const eventReducer = (state = INITIAL_STATE, action) => {
