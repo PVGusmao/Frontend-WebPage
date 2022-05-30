@@ -1,4 +1,4 @@
-import { SET_PERSONS_INFO } from "../action";
+import { SET_PERSONS_INFO, SET_MODAL } from "../action";
 
 const INITIAL_STATE = {
   detailsPerson: [],
@@ -11,7 +11,12 @@ const eventReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         detailsPerson: action.info,
-        showModal: true,
+        showModal: !state.showModal,
+      }
+    case SET_MODAL:
+      return {
+        ...state,
+        showModal: !state.showModal,
       }
     default:
       return state;
