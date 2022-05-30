@@ -11,6 +11,7 @@ function Header() {
 }
 
 const Head = styled.header`
+  background-color: #FFFFFF;
   height: 55px;
 `
 

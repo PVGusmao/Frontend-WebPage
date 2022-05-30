@@ -14,39 +14,47 @@ function App() {
   return (
     <Main>
       <Header />
-      <Container>
-        <TitleWrapper>
-          <Title>Endomarketing</Title>
-          <FilterWrapper>
-            <Filter>
-              <Option>Evento</Option>
-              <Option>Publicação</Option>
-              <Option>Comunicado</Option>
-            </Filter>
-            <CreateEvent>
-              <Paragraph>CRIAR</Paragraph>
-              <Paragraph>+</Paragraph>          
-            </CreateEvent>
-          </FilterWrapper>
-        </TitleWrapper>
-        <CardsWrapper>
-          {
-            list.length !== 0 && list[0].data.map((element) => (
-              <Cards element={ element } key={ element.id } />
-            ))
-          }
-        </CardsWrapper>
-      </Container>
+      <ContainerWrapper>
+        <Container>
+          <TitleWrapper>
+            <Title>Endomarketing</Title>
+            <FilterWrapper>
+              <Filter>
+                <Option>Evento</Option>
+                <Option>Publicação</Option>
+                <Option>Comunicado</Option>
+              </Filter>
+              <CreateEvent>
+                <Paragraph>CRIAR</Paragraph>
+                <Paragraph>+</Paragraph>          
+              </CreateEvent>
+            </FilterWrapper>
+          </TitleWrapper>
+          <CardsWrapper>
+            {
+              list.length !== 0 && list[0].data.map((element) => (
+                <Cards element={ element } key={ element.id } />
+              ))
+            }
+          </CardsWrapper>
+        </Container>
+      </ContainerWrapper>
     </Main>
   );
 }
 
 const Main = styled.main`
+  background: #F2F3F5;
+  height: 100vh;
+`
+
+const ContainerWrapper = styled.section`
 
 `
 
 const Container = styled.section`
   margin-left: 78px;
+  width: 860px;
 `
 
 const TitleWrapper = styled.section`
@@ -63,9 +71,10 @@ const FilterWrapper = styled.section`
 const Filter = styled.select`
   background-color: white;
   border: 1px solid #B4B4B4;
-  height: 37px;
+  border-radius: 5px;
+  height: 38px;
   margin: 10px;
-  width: 94px;
+  width: 103px;
 `
 
 const Option = styled.option`
@@ -76,7 +85,7 @@ const CreateEvent = styled.button`
   align-items: center;
   background-color: #3489B1;
   border: none;
-  border-radius: 5pxl ;
+  border-radius: 5px;
   cursor: pointer;
   display: flex;
   font: inherit;

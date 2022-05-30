@@ -1,45 +1,62 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import more from '../images/more.svg';
 
 function Cards(props) {
   const { element: {title, type, description,
-    info: { date, place }, file: { url }, invitedPeople } } = props;
+    info: { date, place }, file: { url }, invited_people } } = props;
   return (
     <IndividualCard>
-      <Image src={ url } alt={ title } />
-      <Details>
-        <Title>
-          { title }
-        </Title>
-        <About>
-          <Type type={ type }>
-            { type.toUpperCase() }
-          </Type>
-          <Date>
-            {
-              date && date.toUpperCase()
-            }
-          </Date>
-          <Place>
-            {
-              place && `| ${place.toUpperCase()} |`
-            }
-          </Place>
-          <InvitedPeople>
-            {
-              place && `${place.toUpperCase()}`
-            }
-          </InvitedPeople>
-        </About>
-      </Details>
+      <Wrapper>
+        <Image src={ url } alt={ title } />
+        <Details>
+          <Title>
+            { title }
+          </Title>
+          <About>
+            <Type type={ type }>
+              { type.toUpperCase() }
+            </Type>
+            <Date>
+              {
+                date && date.toUpperCase()
+              }
+            </Date>
+            <Place>
+              {
+                place && `| ${place.toUpperCase()} |`
+              }
+            </Place>
+            <InvitedPeople>
+              {
+                invited_people && `${invited_people.filter((people) => people.confirmed_presence).length} CONFIRMAÇÕES DE ${invited_people.length}`
+              }
+            </InvitedPeople>
+          </About>
+          <Description>
+            { description }
+          </Description>
+        </Details>
+      </Wrapper>
+      <More></More>
     </IndividualCard>
   );
 }
 
 const IndividualCard = styled.div`
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
-  margin: 28px;
+  justify-content: space-between;
+  margin: 10px 0px;
+  padding: 10px;
   width: auto;
+`
+
+const Wrapper = styled.div`
+  display: flex;
 `
 
 const Image = styled.img`
@@ -123,9 +140,13 @@ const Place = styled.p`
   width: auto;
 `
 
-const InvitedPeople = styled.p`
+const InvitedPeople = styled.button`
+  background: none;
+  color: inherit;
+  border: none;
   border-bottom: 1px solid #3489B1;
   color: #3489B1;
+	cursor: pointer;
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 300;
@@ -135,6 +156,38 @@ const InvitedPeople = styled.p`
   margin-left: 5px;
   padding: 0px 0px 15px 0px;
   width: auto;
+	outline: inherit;
 `
+
+const Description = styled.p`
+  color: #707070;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 18px;
+`
+
+const More = styled.button`
+  // background: none;
+	// border: none;
+	// color: inherit;
+	// cursor: pointer;
+	// font: inherit;
+  height: 24px;
+	// padding: 0;
+	// outline: inherit;
+  width: 24px;
+`
+
+Cards.propTypes = {
+  title: PropTypes.string,
+  type: PropTypes.string,
+  description: PropTypes.string,
+  date: PropTypes.string,
+  place: PropTypes.string,
+  url: PropTypes.string,
+  invited_people: PropTypes.arrayOf(PropTypes.object),
+}.isRequired;
 
 export default Cards;
