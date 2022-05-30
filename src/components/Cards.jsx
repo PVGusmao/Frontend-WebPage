@@ -30,7 +30,9 @@ function Cards(props) {
             </Place>
             <InvitedPeople>
               {
-                invited_people && `${invited_people.filter((people) => people.confirmed_presence).length} CONFIRMAÇÕES DE ${invited_people.length}`
+                invited_people
+                  && `${invited_people.filter((people) => people.confirmed_presence).length} CONFIRMAÇÕES DE
+                  ${invited_people.length}`
               }
             </InvitedPeople>
           </About>
