@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import more from '../images/more.svg';
 
 function Cards(props) {
   const { element: {title, type, description,
@@ -87,7 +86,7 @@ const About = styled.div`
 
 const Type = styled.p`
   font-weight: 700;
-  font-size: 10px;
+  font-size: 8px;
   margin: 4px 0px;
   padding: 2px 0px;
   text-align: center;
@@ -98,19 +97,19 @@ ${(props) => {
       return css`
         background-color: #EE8686;
         color: #333333;
-        width: 42px;
+        width: 36px;
       `;
       case "release":
         return css`
         background-color: #3489B1;
         color: #ffffff;
-        width: 55px;
+        width: 48px;
       `;  
     default:
       return css`
         background-color: #707070;
         color: #ffffff;
-        width: 77px;
+        width: 66px;
       `;
   }
 }}
@@ -121,7 +120,7 @@ const Date = styled.p`
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 300;
-  font-size: 15px;
+  font-size: 12px;
   line-height: 12px;
   height: 12px;
   margin-left: 5px;
@@ -133,7 +132,7 @@ const Place = styled.p`
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 300;
-  font-size: 15px;
+  font-size: 12px;
   line-height: 12px;
   height: 12px;
   margin-left: 5px;
@@ -150,7 +149,7 @@ const InvitedPeople = styled.button`
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 300;
-  font-size: 15px;
+  font-size: 12px;
   line-height: 12px;
   height: 12px;
   margin-left: 5px;
