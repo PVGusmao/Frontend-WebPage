@@ -228,6 +228,7 @@ const Dispatch = styled.button`
 const Management = styled.section`
   background: #FDFDFD;
   border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
   height: 333px;
   margin-top: 25px;
   padding: 10px;
