@@ -2,13 +2,18 @@ import React, { useEffect, useState } from 'react';
 import Cards from './components/Cards';
 import Header from './components/Header';
 import data from './frontend-test/data.json';
+import management from './frontend-test/management.json';
 import styled from 'styled-components';
+import more from './images/more.svg';
+import web from './images/web.svg';
 
 function App() {
   const [list, setList] = useState([]);
+  const [boards, setBoards] = useState([]);
 
   useEffect(() => {
     setList([data]);
+    setBoards([management]);
   }, [])
 
   return (
@@ -38,20 +43,46 @@ function App() {
             }
           </CardsWrapper>
         </Container>
-        <Notification>
-          <NotificationTitle>Endomarketing</NotificationTitle>
-          <NotificationText>
-            Endomarketing está relacionado às
-            ações de treinamento ou qualificação
-            dos colaboradores da empresa
-            visando um melhor serviço para o
-            cliente. Marketing interno, devido ao
-            nome, é usualmente confundido com
-            Endomarketing mesmo sendo
-            conceitos diferentes.
-          </NotificationText>
-          <Dispatch>DISPENSAR</Dispatch>
-        </Notification>
+        <SideContainer>
+          <Notification>
+            <NotificationTitle>Endomarketing</NotificationTitle>
+            <NotificationText>
+              Endomarketing está relacionado às
+              ações de treinamento ou qualificação
+              dos colaboradores da empresa
+              visando um melhor serviço para o
+              cliente. Marketing interno, devido ao
+              nome, é usualmente confundido com
+              Endomarketing mesmo sendo
+              conceitos diferentes.
+            </NotificationText>
+            <Dispatch>DISPENSAR</Dispatch>
+          </Notification>
+          <Management>
+          <TitleManagement>Quadros de Gestão à Vista</TitleManagement>
+          {
+            boards.length && boards[0].data[0].boards.map((element, index) => (
+              <Demonstrative key={ index }>
+                <DemonstrativeTitleWrapper>
+                  <DemonstrativeTitle>{ element.title }</DemonstrativeTitle>
+                  <IconWrapper>
+                    <Icon src={ web } alt="web icon" />
+                  </IconWrapper>
+                </DemonstrativeTitleWrapper>
+                {
+                  element.resume_files.map((item, ind) => (
+                    <DemonstrativeImage
+                      key={ ind }
+                      src={ item.file }
+                      alt={ element.title }
+                    />
+                  ))
+                }
+              </Demonstrative>
+            ))
+          }
+          </Management>
+        </SideContainer>
       </ContainerWrapper>
     </Main>
   );
@@ -137,12 +168,18 @@ const CardsWrapper = styled.section`
 
 `
 
+const SideContainer = styled.section`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 31.5px;
+`
+
 const Notification = styled.section`
   background-color: #FFF2DE;
   border: 1px solid #DCD1C0;
   height: 308px;
   margin-top: 36px;
-  margin-left: 31.5px;
   width: 278px;
 `
 
@@ -186,6 +223,64 @@ const Dispatch = styled.button`
 	outline: inherit;
 	padding: 0;
   width: 112px;
+`
+
+const Management = styled.section`
+  background: #FDFDFD;
+  border-radius: 5px;
+  height: 333px;
+  margin-top: 25px;
+  padding: 10px;
+  width: 279px;
+`
+
+const TitleManagement = styled.p`
+  color: #707070;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  height: 19px;
+  line-height: 19px;
+  width: 191px;
+`
+
+const Demonstrative = styled.div`
+  margin-top: 10px;
+  background-color: rgba(52, 137, 177, 0.1);
+`
+
+const DemonstrativeTitleWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 2px 0px 2px;
+`
+
+const DemonstrativeTitle = styled.p`
+  color: #707070;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  height: 15px;
+  line-height: 15px;
+  width: auto;
+`
+
+const IconWrapper = styled.div`
+  align-items: center;
+  display: flex;
+`
+
+const Icon = styled.img`
+
+`
+
+const DemonstrativeImage = styled.img`
+  height: 60px;
+  padding: 2.5px;
+  width: 60px;
 `
 
 export default App;
