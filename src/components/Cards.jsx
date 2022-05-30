@@ -41,12 +41,13 @@ function Cards(props) {
             <Date>{date && date.toUpperCase()}</Date>
             <Place>{place && `| ${place.toUpperCase()} |`}</Place>
             <InvitedPeople disabled={ showModal } onClick={ handleModal }>
-              {invited_people &&
-                `${
-                  invited_people.filter((people) => people.confirmed_presence)
-                    .length
-                } CONFIRMAÇÕES DE
-                  ${invited_people.length}`}
+              {
+                invited_people &&
+                  `${
+                    invited_people.filter((people) => people.confirmed_presence).length
+                  } CONFIRMAÇÕES DE
+                    ${invited_people.length}`
+              }
             </InvitedPeople>
           </About>
           <Description>{description}</Description>
@@ -67,7 +68,7 @@ const IndividualCard = styled.div`
   background-color: #ffffff;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
-  height: 100px;
+  height: 93px;
   justify-content: space-between;
   margin: 10px 0px;
   padding: 10px;

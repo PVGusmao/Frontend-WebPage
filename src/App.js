@@ -39,7 +39,9 @@ function App(props) {
               position: "absolute",
               width: "100%",
             }}
-          ><Modal /></div>
+          >
+            <Modal />
+          </div>
         )
       }
       <ContainerWrapper>
