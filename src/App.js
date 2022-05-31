@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import management from "./frontend-test/management.json";
 import styled from "styled-components";
 import DemoCards from "./components/DemoCards";
+import SelectCheckbox from "./components/SelectCheckbox";
 
 function App(props) {
   const { showModal } = props;
@@ -49,15 +50,10 @@ function App(props) {
           <TitleWrapper>
             <Title>Endomarketing</Title>
             <FilterWrapper>
-              <Filter>
-                <Option>TIPO</Option>
-                <Option>EVENT</Option>
-                <Option>PUBLICATION</Option>
-                <Option>RELEASE</Option>
-              </Filter>
+              <SelectCheckbox />
               <CreateEvent>
-                <Paragraph>CRIAR</Paragraph>
-                <Paragraph>+</Paragraph>
+                <ButtonName>CRIAR</ButtonName>
+                <ButtonName>+</ButtonName>
               </CreateEvent>
             </FilterWrapper>
           </TitleWrapper>
@@ -129,17 +125,6 @@ const FilterWrapper = styled.section`
   height: 48px;
 `;
 
-const Filter = styled.select`
-  background-color: white;
-  border: 1px solid #b4b4b4;
-  border-radius: 5px;
-  height: 38px;
-  margin: 0px 10px;
-  width: 103px;
-`;
-
-const Option = styled.option``;
-
 const CreateEvent = styled.button`
   align-items: center;
   background-color: #3489b1;
@@ -147,7 +132,6 @@ const CreateEvent = styled.button`
   border-radius: 5px;
   cursor: pointer;
   display: flex;
-  font: inherit;
   height: 38px;
   justify-content: space-evenly;
   outline: inherit;
@@ -155,7 +139,7 @@ const CreateEvent = styled.button`
   width: 103px;
 `;
 
-const Paragraph = styled.p`
+const ButtonName = styled.p`
   color: #ffffff;
   font-family: "Roboto";
   font-style: normal;
