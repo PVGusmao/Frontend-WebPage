@@ -106,16 +106,31 @@ function App(props) {
 
 const Main = styled.main`
   background: #f2f3f5;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
 `;
 
 const ContainerWrapper = styled.section`
+  align-items: center;
   display: flex;
+  justify-content: center;
+
+  @media (max-width: 1300px) {
+    margin-right: 20px;
+  }
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
 `;
 
 const Container = styled.section`
   margin-left: 78px;
   width: 860px;
+
+  @media (max-width: 1300px) {
+    margin-left: 20px;
+  }
 `;
 
 const TitleWrapper = styled.section`
@@ -173,6 +188,10 @@ const SideContainer = styled.section`
   display: flex;
   flex-direction: column;
   margin-left: 31.5px;
+
+  @media (max-width: 1000px) {
+    flex-direction: row;
+  }
 `;
 
 const Notification = styled.section`
