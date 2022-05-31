@@ -30,19 +30,9 @@ function App(props) {
       <Header />
       {
         showModal && (
-          <div
-            style={{
-              alignItems: "center",
-              backgroundColor: "rgba(50, 50, 50, 0.2)",
-              display: "flex",
-              height: "100%",
-              justifyContent: "center",
-              position: "absolute",
-              width: "100%",
-            }}
-          >
+          <ShadowBehindModal>
             <Modal />
-          </div>
+          </ShadowBehindModal>
         )
       }
       <ContainerWrapper>
@@ -58,14 +48,16 @@ function App(props) {
             </FilterWrapper>
           </TitleWrapper>
           <CardsWrapper>
-            {list.length !== 0 &&
-              list.map((element) => (
-                <Cards
-                  handleRemoveButton={ handleRemoveButton }
-                  element={element}
-                  key={element.id}
-                />
-              ))}
+            {
+              list.length !== 0 &&
+                list.map((element) => (
+                  <Cards
+                    handleRemoveButton={ handleRemoveButton }
+                    element={element}
+                    key={element.id}
+                  />
+                ))
+            }
           </CardsWrapper>
         </Container>
         <SideContainer>
@@ -241,6 +233,16 @@ const TitleManagement = styled.p`
   line-height: 19px;
   width: 191px;
 `;
+
+const ShadowBehindModal = styled.div`
+  align-items: center;
+  background-color: rgba(50, 50, 50, 0.2);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+`
 
 const mapStateToProps = (state) => ({
   showModal: state.eventReducer.showModal,
