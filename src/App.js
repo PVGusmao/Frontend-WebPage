@@ -262,7 +262,8 @@ const mapStateToProps = (state) => ({
 });
 
 App.propTypes = {
-  showModal: PropTypes.bool, 
+  showModal: PropTypes.bool,
+  filterType: PropTypes.instanceOf(PropTypes.object),
 }.isRequired;
 
 export default connect(mapStateToProps, null)(App);
