@@ -68,25 +68,52 @@ const IndividualCard = styled.div`
   background-color: #ffffff;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
-  height: 93px;
+  height: 98px;
   justify-content: space-between;
   margin: 10px 0px;
   padding: 10px;
   width: auto;
+
+  @media (max-width: 1100px) {
+    margin-right: 20px;
+    width: 95%;
+  }
+
+  @media (max-width: 615px) {
+    align-items: center;
+    flex-direction: column;
+    height: 300px;
+    justify-content: center;
+  }
 `;
 
 const Wrapper = styled.div`
   display: flex;
+  
+  @media (max-width: 615px) {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const Image = styled.img`
   height: 73px;
   width: 73px;
+
+  @media (max-width: 615px) {
+    height: 120px;
+    width: 120px;
+  }
 `;
 
 const Details = styled.section`
   padding-left: 16px;
   padding-top: 8px;
+
+  @media (max-width: 615px) {
+    padding: 10px 0 0 0 ;
+  }
 `;
 
 const Title = styled.p`
@@ -98,11 +125,21 @@ const Title = styled.p`
   height: 19px;
   line-height: 19px;
   width: auto;
+
+  @media (max-width: 615px) {
+    font-size: 14px;
+    text-align: center;
+  }
 `;
 
 const About = styled.div`
   align-items: center;
   display: flex;
+
+  @media (max-width: 615px) {
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const Type = styled.p`
@@ -186,6 +223,11 @@ const Description = styled.p`
   font-weight: 300;
   font-size: 13px;
   line-height: 18px;
+
+  @media (max-width: 615px) {
+    // text-align: center;
+    width: 300px;
+  }
 `;
 
 const MoreWrapper = styled.div`
@@ -193,6 +235,12 @@ const MoreWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px;
+
+  @media (max-width: 615px) {
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px 0 0 0;
+  }
 `
 
 const More = styled.button`
@@ -221,6 +269,10 @@ const Remove = styled.button`
   margin-bottom: 10px;
   padding: 5px;
   outline: inherit;
+
+  @media (max-width: 615px) {
+    margin-left: 20px;
+  }
 `;
 
 Cards.propTypes = {

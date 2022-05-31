@@ -56,6 +56,10 @@ function SelectCheckbox(props) {
 const MultiSelect = styled.div`
   padding: 0px 10px 0px 0px;
   width: 150px;
+
+  @media (max-width: 615px) {
+    z-index: 1000;
+  }
 `;
 
 const SelectBox = styled.div`

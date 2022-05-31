@@ -111,25 +111,32 @@ const Main = styled.main`
 `;
 
 const ContainerWrapper = styled.section`
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   justify-content: center;
 
-  @media (max-width: 1300px) {
+  @media (mas-width: 1300px) {
     margin-right: 20px;
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
+    align-items: center;
     flex-direction: column;
+    width: 100%;
   }
 `;
 
 const Container = styled.section`
   margin-left: 78px;
-  width: 860px;
+  width: auto;
 
   @media (max-width: 1300px) {
     margin-left: 20px;
+  }
+
+  @media (max-width: 1100px) {
+    margin-left: 20px;
+    width: 100%;
   }
 `;
 
@@ -138,6 +145,16 @@ const TitleWrapper = styled.section`
   display: flex;
   justify-content: space-between;
   margin-top: 36px;
+  width: 100%;
+
+  @media (max-width: 1100px) {
+    margin-right: 20px;
+    width: 95%;
+  }
+
+  @media (max-width: 615px) {
+    flex-direction: column; 
+  }
 `;
 const FilterWrapper = styled.section`
   display: flex;
@@ -181,7 +198,9 @@ const Title = styled.h3`
   width: 240px;
 `;
 
-const CardsWrapper = styled.section``;
+const CardsWrapper = styled.section`
+  width: 100%;
+`;
 
 const SideContainer = styled.section`
   align-items: center;
@@ -189,17 +208,30 @@ const SideContainer = styled.section`
   flex-direction: column;
   margin-left: 31.5px;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
+    background-color: #f2f3f5;
+    justify-content: space-evenly;
     flex-direction: row;
+    margin-left: 0px;
+    padding-bottom: 20px;
+    width: 100%;
+  }
+
+  @media (max-width: 615px) {
+    flex-direction: column; 
   }
 `;
 
 const Notification = styled.section`
   background-color: #fff2de;
   border: 1px solid #dcd1c0;
-  height: 308px;
+  height: 340px;
   margin-top: 36px;
   width: 278px;
+
+  @media (max-width: 1100px) {
+    margin-top: 10px;
+  }
 `;
 
 const NotificationTitle = styled.p`
@@ -252,6 +284,12 @@ const Management = styled.section`
   margin-top: 25px;
   padding: 10px;
   width: 279px;
+
+  @media (max-width: 1100px) {
+    border-radius: 0px;
+    height: 340px;
+    margin-top: 10px;
+  }
 `;
 
 const TitleManagement = styled.p`
