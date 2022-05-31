@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import styled from "styled-components";
+import { setEvent, setPublication, setRelease } from "../redux/action";
 
-function SelectCheckbox() {
+function SelectCheckbox(props) {
+  const { setEvent, setPublication, setRelease } = props;
   const [expanded, setExpanded] = useState(false);
 
   const showCheckboxes = () => {
@@ -15,6 +19,12 @@ function SelectCheckbox() {
     }
   };
 
+  const handleFilter = ({ target }) => {
+    target.id === 'event' && setEvent();
+    target.id === 'release' && setRelease();
+    target.id === 'publication' && setPublication();
+  }
+
   return (
     <>
       <MultiSelect>
@@ -27,15 +37,15 @@ function SelectCheckbox() {
         <CheckboxWrapper expanded={expanded} className="checkboxes">
           <Label htmlFor="event">
             EVENT
-            <InputCheckbox type="checkbox" id="event" />
+            <InputCheckbox onClick={ handleFilter } type="checkbox" id="event" />
           </Label>
           <Label htmlFor="release">
             RELEASE
-            <InputCheckbox type="checkbox" id="release" />
+            <InputCheckbox onClick={ handleFilter } type="checkbox" id="release" />
           </Label>
           <Label htmlFor="publication">
             PUBLICATION
-            <InputCheckbox type="checkbox" id="publication" />
+            <InputCheckbox onClick={ handleFilter } type="checkbox" id="publication" />
           </Label>
         </CheckboxWrapper>
       </MultiSelect>
@@ -92,4 +102,17 @@ const InputCheckbox = styled.input`
   cursor: pointer;
 `;
 
-export default SelectCheckbox;
+const mapDispatchToProps = (dispatch) => ({
+  setRelease: () => dispatch(setRelease()),
+  setEvent: () => dispatch(setEvent()),
+  setPublication: () => dispatch(setPublication()),
+});
+
+SelectCheckbox.propTypes = {
+  setRelease: PropTypes.func,
+  setEvent: PropTypes.func,
+  setPublication: PropTypes.func,
+}.isRequired;
+
+export default connect(null, mapDispatchToProps)(SelectCheckbox);
+

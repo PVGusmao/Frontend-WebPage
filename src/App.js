@@ -11,7 +11,7 @@ import DemoCards from "./components/DemoCards";
 import SelectCheckbox from "./components/SelectCheckbox";
 
 function App(props) {
-  const { showModal } = props;
+  const { showModal, filterType } = props;
   const [list, setList] = useState([]);
   const [boards, setBoards] = useState([]);
 
@@ -49,8 +49,20 @@ function App(props) {
           </TitleWrapper>
           <CardsWrapper>
             {
-              list.length !== 0 &&
-                list.map((element) => (
+              filterType.event || filterType.release || filterType.publication
+                ? list.length !== 0 &&
+                list.filter((type) => (
+                  filterType.event && type.type === 'event')
+                  || (filterType.release && type.type === 'release')
+                  || (filterType.publication && type.type === 'publication'))
+                  .map((element) => (
+                  <Cards
+                    handleRemoveButton={ handleRemoveButton }
+                    element={element}
+                    key={element.id}
+                  />
+                ))
+                : list.map((element) => (
                   <Cards
                     handleRemoveButton={ handleRemoveButton }
                     element={element}
@@ -246,10 +258,11 @@ const ShadowBehindModal = styled.div`
 
 const mapStateToProps = (state) => ({
   showModal: state.eventReducer.showModal,
+  filterType: state.filterReducer,
 });
 
 App.propTypes = {
-  showModal: PropTypes.bool,
+  showModal: PropTypes.bool, 
 }.isRequired;
 
 export default connect(mapStateToProps, null)(App);
