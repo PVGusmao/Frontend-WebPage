@@ -58,7 +58,7 @@ const MultiSelect = styled.div`
   width: 150px;
 
   @media (max-width: 615px) {
-    z-index: 1000;
+    z-index: 1;
   }
 `;
 
@@ -67,6 +67,7 @@ const SelectBox = styled.div`
 `;
 
 const Filter = styled.select`
+  background-color: white;
   border-radius: 5px;
   font-size: 14px;
   font-weight: bold;
@@ -92,7 +93,6 @@ const Label = styled.label`
   align-items: center;
   cursor: pointer;
   display: flex;
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
   font-size: 14px;

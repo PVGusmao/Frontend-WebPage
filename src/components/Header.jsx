@@ -13,6 +13,12 @@ function Header() {
 const Head = styled.header`
   background-color: #FFFFFF;
   height: 55px;
+
+  @media (max-width: 615px) {
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+  }
 `
 
 const Image = styled.img`

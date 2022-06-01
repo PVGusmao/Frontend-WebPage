@@ -70,7 +70,6 @@ const DemonstrativeTitleWrapper = styled.div`
 
 const DemonstrativeTitle = styled.p`
   color: #707070;
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-size: 13px;

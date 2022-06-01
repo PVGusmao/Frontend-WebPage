@@ -49,7 +49,6 @@ const Main = styled.section`
 
 const Title = styled.h1`
   color: #707070;
-  font-family: "Roboto";
   font-style: normal;
   height: 19px;
   line-height: 19px;
@@ -81,7 +80,6 @@ const About = styled.section`
 
 const Name = styled.p`
   color: #707070;
-  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -90,7 +88,6 @@ const Name = styled.p`
 
 const Username = styled.p`
   color: #707070;
-  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -99,7 +96,6 @@ const Username = styled.p`
 
 const Confirmation = styled.p`
   color: #707070;
-  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
   font-size: 14px;

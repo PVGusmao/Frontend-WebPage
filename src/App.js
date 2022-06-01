@@ -27,7 +27,6 @@ function App(props) {
 
   return (
     <Main>
-      <Header />
       {
         showModal && (
           <ShadowBehindModal>
@@ -35,6 +34,7 @@ function App(props) {
           </ShadowBehindModal>
         )
       }
+      <Header />
       <ContainerWrapper>
         <Container>
           <TitleWrapper>
@@ -106,7 +106,7 @@ function App(props) {
 
 const Main = styled.main`
   background: #f2f3f5;
-  height: 100%;
+  height: auto;
   width: 100%;
 `;
 
@@ -137,6 +137,10 @@ const Container = styled.section`
   @media (max-width: 1100px) {
     margin-left: 20px;
     width: 100%;
+  }
+
+  @media (max-width: 615px) {
+    margin-top: 25px;
   }
 `;
 
@@ -177,7 +181,6 @@ const CreateEvent = styled.button`
 
 const ButtonName = styled.p`
   color: #ffffff;
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -188,7 +191,6 @@ const ButtonName = styled.p`
 
 const Title = styled.h3`
   color: #707070;
-  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
   font-size: 35px;
@@ -236,7 +238,6 @@ const Notification = styled.section`
 
 const NotificationTitle = styled.p`
   color: #707070;
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -264,7 +265,6 @@ const Dispatch = styled.button`
   border-radius: 5px;
   color: #707070;
   cursor: pointer;
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
   font-size: 13px;
@@ -294,7 +294,6 @@ const Management = styled.section`
 
 const TitleManagement = styled.p`
   color: #707070;
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -307,10 +306,20 @@ const ShadowBehindModal = styled.div`
   align-items: center;
   background-color: rgba(50, 50, 50, 0.2);
   display: flex;
-  height: 100%;
+  height: 106%;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   width: 100%;
+  z-index: 2;
+
+  @media (max-width: 1100px) {
+    z-index: 2;
+  }
+
+  @media (max-width: 615px) {
+    margin-top: 35px;
+    z-index: 2;
+  }
 `
 
 const mapStateToProps = (state) => ({

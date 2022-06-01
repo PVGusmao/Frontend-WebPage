@@ -118,7 +118,6 @@ const Details = styled.section`
 
 const Title = styled.p`
   color: #707070;
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -175,7 +174,6 @@ const Type = styled.p`
 
 const Date = styled.p`
   color: #707070;
-  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
   font-size: 12px;
@@ -187,7 +185,6 @@ const Date = styled.p`
 
 const Place = styled.p`
   color: #707070;
-  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
   font-size: 12px;
@@ -204,7 +201,6 @@ const InvitedPeople = styled.button`
   border-bottom: 1px solid #3489b1;
   color: #3489b1;
   cursor: pointer;
-  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
   font-size: 12px;
@@ -218,7 +214,6 @@ const InvitedPeople = styled.button`
 
 const Description = styled.p`
   color: #707070;
-  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
   font-size: 13px;
