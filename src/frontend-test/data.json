@@ -24,14 +24,14 @@
                     "id": 2,
                     "name": "Jardeson Eduardo",
                     "confirmed_presence": false,
-                    "avatar": "https://static-incicle.s3.us-east-1.amazonaws.com/front-test-files/jardesson.jpg",
+                    "avatar": "https://static-incicle.s3.amazonaws.com/front-test-files/jardesson.jpeg",
                     "username": "kenedymorais"
                 },
                 {
                     "id": 2,
                     "name": "Patricia Santos",
                     "confirmed_presence": true,
-                    "avatar": "https://static-incicle.s3.us-east-1.amazonaws.com/front-test-files/patricia.jpg",
+                    "avatar": "https://static-incicle.s3.amazonaws.com/front-test-files/patricia.jpeg",
                     "username": "kenedymorais"
                 }
             ]
@@ -78,7 +78,7 @@
                     "id": 2,
                     "name": "Patricia Santos",
                     "confirmed_presence": true,
-                    "avatar": "https://static-incicle.s3.us-east-1.amazonaws.com/front-test-files/patricia.jpg",
+                    "avatar": "https://static-incicle.s3.amazonaws.com/front-test-files/patricia.jpeg",
                     "username": "kenedymorais"
                 }
             ]
